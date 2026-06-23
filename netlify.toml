@@ -1,0 +1,17 @@
+# Netlify configuration for ToolNest (Next.js 14)
+# Uses @netlify/plugin-nextjs for full App Router support.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Force Node.js 20 (required for Next.js 14)
+  NODE_VERSION = "20"
+  # Prevent npm from trying to audit packages (speeds up CI)
+  NPM_FLAGS = "--no-audit --no-fund"
+  # Next.js telemetry off in CI
+  NEXT_TELEMETRY_DISABLED = "1"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
